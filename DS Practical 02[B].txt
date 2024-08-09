@@ -1,0 +1,70 @@
+//                                ***ARRAY INSERTION AND DELITION ***
+
+//[B]:- Create an array of size n and write a program to delete an element (begining, end and specific position).
+
+#include<stdio.h>
+
+void main(){
+    int i, size, delete, temp, end, posi, ele;
+    int a[10];
+
+    //Declaring the array size:-
+    printf("Enter the size of an array, which can be maximum of 10 elements: ");
+    scanf("%d", &size);
+
+    //Inserting array elements:-
+    printf("Enter %d elements in array.\n ",size);
+    for(i=0; i<size; i++){
+        scanf("%d",&a[i]);
+    }
+
+    //Deleting element at begining in array
+    printf("Deleting element at begining...\n");
+
+    //Deleting element at end in array
+    printf("Deliting element at end...\n");
+
+    //Deliting at begining
+    size--;
+    for(i=0; i < size; i++){
+        a[i]=a[i+1];
+
+    }
+    //Deliting at begining:-
+    delete = a[0];
+    size--;
+
+    //Deliting at end:-
+    end = a[size];
+    size--;
+   
+
+    for(i=0; i<=size; i++){
+        printf("%d\t", a[i]);
+    }
+
+    printf("\n");
+
+    //Deliting at any position
+    printf("Enter the position :-\n");
+    scanf("%d",&posi);
+    posi--;
+    
+    
+    for (i = posi; i <size; i++)
+    {
+       a[i] = a[i+1];
+
+    }
+    ele = a[posi-1];
+    size--;
+
+
+    //Printing of complete arrray:-
+    for(i=0; i<=size; i++){
+        printf("%d\t", a[i]);
+    }
+    
+
+
+}
