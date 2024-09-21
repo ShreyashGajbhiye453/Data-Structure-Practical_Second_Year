@@ -1,0 +1,99 @@
+// PART [B] :- BY USING THE LINKED LIST
+#include <stdio.h>
+#include <stdlib.h>
+
+// Stack implementation using linked list :-
+
+//Blueprint for the node (structure) :-
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *Top = NULL;
+
+//Function for entering the element into the stack :-
+void push(int x)
+{
+    struct node *new;
+    new = (struct node *)malloc(sizeof(struct node));
+
+    if (new == NULL)
+    {
+        printf("Stack overflow\n");
+        return;
+    }
+    new->data = x;
+    new->next = Top;
+    Top = new;
+}
+
+//Function for pop (deleting) the element in stack :-
+void pop()
+{
+    struct node *t;
+    if (Top == NULL)
+    {
+        printf("Stack underflow\n");
+    }
+    else
+    {
+        t = Top;
+        Top = Top->next;
+        printf("The pop element is %d\n", t -> data);
+        free(t);
+        t = NULL;
+    }
+}
+
+
+//Function to print the element in the stack :-
+void print()
+{
+    struct node *temp = Top;
+    if (Top == NULL)
+    {
+        printf("Stack is empty.\n");
+        return;
+    }
+    printf("Printing the elements in stack.\n");
+    while (temp != NULL)
+    {
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int choice;
+    int add;
+
+    do
+    {
+        printf("\nChoose the stack operation:  1.Push  2.Pop  3.Print  4.Exit \n");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("Enter value to add in the stack\n");
+            scanf("%d", &add);
+            push(add);
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            print();
+            break;
+        case 4:
+            printf("You exited successfully.\n");
+            break;
+        default:
+            printf("Please enter the valid choice!!\n");
+        }
+    } while (choice != 4);
+
+    return 0;
+}
